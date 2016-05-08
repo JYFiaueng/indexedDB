@@ -229,3 +229,33 @@ document.querySelector("#selectBtn").addEventListener("click", function(){
 		cursor.continue();
 	};
 });
+document.querySelector("#selectBtn1").addEventListener("click", function(){
+	var curName = document.getElementById("selphone").value;
+	var transaction = db.transaction([tableName], "readwrite");
+	if(curName === ""){
+		alert("请输入电话");
+	}
+	transaction.oncomplete = function(event){
+		console.log("transaction complete");
+	};
+	transaction.onerror = function(event){
+		console.dir(event);
+	};
+	var objectStore = transaction.objectStore(tableName);
+	var boundKeyRange = IDBKeyRange.only(curName);
+	document.getElementById("content").innerHTML = "";//清空content
+	objectStore.index("phone").openCursor(boundKeyRange).onsuccess = function(event){
+		var cursor = event.target.result;
+		if(!cursor){
+			return;
+		}
+		var rowDate = cursor.value;
+		console.log(rowDate);
+		render({key:cursor.key,
+				name:cursor.value["name"],
+				phone:cursor.value["phone"],
+				address:cursor.value["address"]
+			});
+		cursor.continue();
+	};
+});
