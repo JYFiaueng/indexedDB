@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IndexedDB</title>
+<style>
+	ul,li{margin: 0;padding:0;text-decoration: none;}
+	#content_out li{display: inline-block;width: 200px;text-align: center;line-height: 30px;}
+	#table_header li{background-color: #aaa;margin-right: -5.5px;}
+</style>
+</head>
+<body>
+<div>
+	<i>姓名：</i><input type="text" id="name">
+	<i>电话：</i><input type="text" id="phone">
+	<i>地址：</i><input type="text" id="address">
+	<input type="button" value="添加" id="add">
+	<input type="button" value="删除数据库" id="deleteDB"><br>
+	<i>姓名：</i><input type="text" id="selname">
+	<input type="button" value="查询" id="selectBtn">
+</div>
+<div id="content_out">
+	<ul id="table_header">
+		<li>key</li>
+		<li>姓名</li>
+		<li>电话</li>
+		<li>地址</li>
+		<li>删除</li>
+	</ul>
+	<div id="content">
+		
+	</div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
