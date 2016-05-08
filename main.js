@@ -32,7 +32,7 @@ function init(){
 		db = e.target.result;
 		console.log(db.version);
 		db.onversionchange = function(){
-			alert("数据库在其他地方被修改，需要立即关闭");
+			// alert("数据库在其他地方被修改，需要立即关闭");
 			db.close();
 		};
 		db.onerror = function(event){
